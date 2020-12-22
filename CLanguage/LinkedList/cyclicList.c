@@ -12,8 +12,8 @@ NODE head = NULL;
 
 void cyclicLoop(){
 	NODE next=head;
-	NODE nextOfNext = head->next;
-	while(next!=nextOfNext && next!=NULL){
+	NODE nextOfNext = head;
+	while(nextOfNext && nextOfNext->next){
 		if(next->next != NULL){
 			next=next->next;
 			nextOfNext=nextOfNext->next->next;
@@ -23,6 +23,12 @@ void cyclicLoop(){
 		}
 		if(next==nextOfNext){
 			printf("This is a cyclic list \n");
+			next=head;
+			while(next!=nextOfNext){
+				next=next->next;
+				nextOfNext=nextOfNext->next;	
+			}
+			printf("%d \n",next->data);
 			break;
 		}
 	}
@@ -45,7 +51,7 @@ void main(){
 	f2->next=f3;
 	f3->next=f4;
 	f4->next=f5;
-	f5->next=f2;
+	f5->next=f3;
 	
 	head = f1;
 	
