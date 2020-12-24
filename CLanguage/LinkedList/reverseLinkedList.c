@@ -28,18 +28,18 @@ void insert(int data){
 }
 
 void reverse(){
-	NODE* refNode = NULL;
+	NODE * nextNode;
 	NODE* node = head;
-	NODE* prevNode = NULL;
+	NODE * prevNode = NULL;
 	while(node){
+		nextNode = node->addr;
+		node->addr = prevNode;
 		prevNode = node;
-		node->addr = refNode;
-		node = prevNode->addr;
+		node = nextNode;
 		if(!node){
-			head = node;
+			head = prevNode;
 			break;
 		}
-		refNode = prevNode;
 	}
 }
 
