@@ -11,11 +11,11 @@ void stringmatch(int a)
 		{
 			i++;m++;
 			if(i>=a-1)
-			//if(pat[i]=='\0')
+			//if(pat[i] == '\0')
 			{
 				flag=1;
 				for(k=0;rep[k]!='\0';k++,j++)
-				ans[j]=rep[k];
+				ans[j] =rep[k];
 				i=0;
 				c=m;			
 			}

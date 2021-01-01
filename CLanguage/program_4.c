@@ -45,5 +45,5 @@ void main(){
 	while(s[top]!='#')
 	pofx[k++]=pop();
 	pofx[k]='\0';
-	printf("\n\nFiven Infix Exprn: %s Postfix Expn: %s\n",infx,pofx);
+	printf("\n\nGiven Infix Exprn: %s Postfix Expn: %s\n",infx,pofx);
 }

@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #define MAX 4
 int ch, front = 0, rear = -1,count=0;
-char q[MAX],item;
+char q[MAX],item = 0;
 void insert(){
 	if(count==MAX)
 		printf("\nQueue is full");
@@ -45,11 +45,11 @@ void main(){
 	do{
 		printf("\n1.Insert\n2.Delete\n3.Display\n4.Exit");
 		printf("\nEnter the choice: ");
-		scanf("%d",&ch);
+		scanf(" %d",&ch);
 		switch(ch){
 			case 1:
 				printf("\nEnter the character / item to be inserted: ");
-				scanf("%c",&item);
+				scanf(" %s",&item);
 				insert();
 				break;
 			case 2: del();
@@ -58,6 +58,7 @@ void main(){
 				break;
 			case 4: exit(0);
 				break;
+			default:exit(0);
 		}
 	}while(ch!=4);
 }
