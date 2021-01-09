@@ -11,6 +11,7 @@ typedef struct node* NODE;
 NODE headA = NULL;
 NODE headB = NULL;
 
+//O(m*n)
 void intersectingNode(){
 	NODE linkA=headA;
 	NODE linkB=headB;
@@ -28,6 +29,8 @@ void intersectingNode(){
 	}
 	printf("The list is not intersecting\n");
 }
+
+
 
 void main(){
 	NODE first = (NODE)malloc(sizeof(struct node));
