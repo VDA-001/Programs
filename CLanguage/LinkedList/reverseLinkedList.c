@@ -43,6 +43,15 @@ void reverse(){
 	}
 }
 
+//Display in reverse
+void displayReverse(NODE* hed){
+	if(!hed){
+        return;
+    }
+    displayReverse(hed->addr);
+    printf("%d \t",hed->data);
+}
+
 //Display the elements of the LinkedList
 int display(){
     if(head==NULL){
@@ -82,9 +91,10 @@ int delete(){
 
 int main(){
     int n,data;
+	
     
     for(;;){
-        printf("Enter the operation to perform (1.Insert , 2.Display , 3.Delete ,4.Reverse , 5.Exit,): ");
+        printf("Enter the operation to perform (1.Insert , 2.Display , 3.Delete ,4.Reverse ,5.Display Reverse, 6.Exit,): ");
         scanf("%d",&n);
         switch (n)
         {
@@ -102,7 +112,10 @@ int main(){
         case 4:
         	reverse();
         	break;
-        case 5:
+	case 5:
+            displayReverse(head);
+            break;
+        case 6:
             exit(0);
         default:
         printf("Enter a valid number \n");

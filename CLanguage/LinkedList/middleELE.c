@@ -28,14 +28,31 @@ void deleteFirst(){
         printf("%d\n",count);
 }
 
+//By using global variable count
+/*
 void middleELE(){
 	int mid = (count%2 == 0) ? (count/2)-1 : (count/2);
 	NODE node = head;
 	while(mid>0){
 		node = node->next;
+		mid-=1;
 	}
 	printf("The data in middle node is %d\n",node->data);
 		
+}*/
+
+//Without using global var count and in one scan using efficient approach
+void middleELE(){
+	NODE slow = head;
+	NODE fast = head;
+	while(fast){
+		if(fast->next!=NULL){
+			fast = fast->next->next;
+			slow = slow->next;
+		}else
+			break;
+	}
+	printf("The middle element is %d\n",slow->data);		
 }
 
 void main(){
