@@ -29,14 +29,20 @@ void deleteFirst(){
 }
 
 void middleELE(){
-	
+	int mid = (count%2 == 0) ? (count/2)-1 : (count/2);
+	NODE node = head;
+	while(mid>0){
+		node = node->next;
+	}
+	printf("The data in middle node is %d\n",node->data);
+		
 }
 
 void main(){
 
         for(;;){
                 int ch,data,k;
-                printf("Enter your choice 1. Insert at front 2. delete at front 3. find kth node from last \n");
+                printf("Enter your choice 1. Insert at front 2. delete at front 3. middle element \n");
                 scanf("%d",&ch);
                 switch(ch){
                         case 1:
@@ -48,9 +54,7 @@ void main(){
                                 deleteFirst();
                                 break;
                         case 3:
-                                printf("Insert k value: ");
-                                scanf("%d",&k);
-                                kthNode(k);
+                                middleELE();
                                 break;
                         default:
                                 exit(0);
