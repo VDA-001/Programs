@@ -13,6 +13,7 @@ void stringmatch(int a)
 			if(i>=a-1)
 			//if(pat[i] == '\0')
 			{
+				printf("\b");
 				flag=1;
 				for(k=0;rep[k]!='\0';k++,j++)
 				ans[j] =rep[k];
