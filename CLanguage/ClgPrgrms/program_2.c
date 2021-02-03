@@ -11,7 +11,7 @@ void stringmatch(int a)
 		{
 			i++;m++;
 			if(i>=a-1)
-			//if(pat[i] == '\0')
+			//if(pat[i]=='\0' )
 			{
 				printf("\b");
 				flag=1;
