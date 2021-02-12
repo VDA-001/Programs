@@ -70,4 +70,5 @@ void readPoly(NODE head){
     printf("\n");
 }
 
-void addPoly()
+void addPoly(NODE head){
+	
