@@ -5,36 +5,36 @@ int q[20], front = -1,rear = -1;
 int s[20], top = -1, count=0;
 void bfs(int v)
 {
-int i, cur;
-visited[v] = 1;
-q[++rear] = v;
-while(front!=rear)
-{
-cur = q[++front];
-for(i=1;i<=n;i++)
-{
-if((a[cur][i]==1)&&(visited[i]==0))
-{
-q[++rear] = i;
-visited[i] = 1;
-printf("%d ", i);
-}
-}
-}
+    int i, cur;
+    visited[v] = 1;
+    q[++rear] = v;
+    while(front!=rear)
+    {
+        cur = q[++front];
+        for(i=1;i<=n;i++)
+        {
+            if((a[cur][i]==1)&&(visited[i]==0))
+            {
+                q[++rear] = i;
+                visited[i] = 1;
+                printf("%d ", i);
+            }
+        }
+    }
 }
 void dfs(int v)
 {
-int i;
-visited[v]=1;
-s[++top] = v;
-for(i=1;i<=n;i++)
-{
-if(a[v][i] == 1&& visited[i] == 0 )
-{
-printf("%d ", i);
-dfs(i);
-}
-}
+    int i;
+    visited[v]=1;
+    s[++top] = v;
+    for(i=1;i<=n;i++)
+    {
+        if(a[v][i] == 1&& visited[i] == 0 )
+        {
+            printf("%d ", i);
+            dfs(i);
+        }
+    }
 }
 void main()
 {
