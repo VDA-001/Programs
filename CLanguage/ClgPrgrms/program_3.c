@@ -52,38 +52,50 @@ void pop(){
 }
 
 void pali(){
-	int digit,j,k,len=top+1,ind=0;
-	int num[max_size],rev[max_size],i=0;
-	int length=0;
-	while(top!=-1){
-		digit=stack[top];
-		num[i]=digit;
-		top--;
-		i++;
+	int i, count=0;
+	for(i=0;i<=(top/2);i++){
+		if(stack[i]==stack[top-1])
+			count++;
 	}
-	for(j=0;j<len;j++){
-		printf("Numbers=%d\n",num[j]);
-	}
-	printf("reverse Operation:\n");
-	for(k=len-1;k>=0;k--){
-		rev[k]=num[ind];
-		ind++;
-	}
-	printf("Reverse array: ");
-	for(k=0;k<len;k++)
-		printf("%d\n",rev[k]);
-	printf("Check for palindrome: \n");
-	for(i=0;i<len;i++){
-		if(num[i]==rev[i]){
-			length=length+1;
-		}
-	}
-	if(length==len)
-		printf("It is palindrome number\n");
+	if((top/2+1)==count)
+	printf("Stack content are palindrome\n");
 	else
-		printf("It is not a palindrome number\n");
-	top=len-1;
-}
+	{
+		printf("Not palindrome\n");
+	}
+		
+	}
+	// int digit,j,k,len=top+1,ind=0;
+	// int num[max_size],rev[max_size],i=0;
+	// int length=0;
+	// while(top!=-1){
+	// 	digit=stack[top];
+	// 	num[i]=digit;
+	// 	top--;
+	// 	i++;
+	// }
+	// for(j=0;j<len;j++){
+	// 	printf("Numbers=%d\n",num[j]);
+	// }
+	// printf("reverse Operation:\n");
+	// for(k=len-1;k>=0;k--){
+	// 	rev[k]=num[ind];
+	// 	ind++;
+	// }
+	// printf("Reverse array: ");
+	// for(k=0;k<len;k++)
+	// 	printf("%d\n",rev[k]);
+	// printf("Check for palindrome: \n");
+	// for(i=0;i<len;i++){
+	// 	if(num[i]==rev[i]){
+	// 		length=length+1;
+	// 	}
+	// }
+	// if(length==len)
+	// 	printf("It is palindrome number\n");
+	// else
+	// 	printf("It is not a palindrome number\n");
+	// top=len-1;
 void display(){
 	int i;
 	if(top==-1){
