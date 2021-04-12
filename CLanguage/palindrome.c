@@ -6,15 +6,15 @@ int main(){
 	q=n;
 	while(q!=0)
 	{
-	res=q%10;
-	result=result*10+res;
-	q=q/10;
+		res=q%10;
+		result=result*10+res;
+		q=q/10;
 	}
 	if(result==n){
-	printf("It is a palindrome\n");
+		printf("It is a palindrome\n");
 	}
 	else{
-	printf("It is not a palindrome\n");
+		printf("It is not a palindrome\n");
 	}
 	return 0;
 }
