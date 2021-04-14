@@ -11,7 +11,7 @@ struct poly{
 typedef struct poly* NODE;
 
 NODE getnode(){
-    NODE ref = (NODE)malloc(sizeof(struct poly));
+  k  NODE ref = (NODE)malloc(sizeof(struct poly));
     if(!ref){
         printf("Insufficient space\n");
         exit(0);
@@ -21,7 +21,7 @@ NODE getnode(){
 }
 
 void display(NODE head){
-    NODE cur = head;
+    NODE cur = head->next;
     if(head == head->next){
         printf("Nothing to display\n");
         return;
