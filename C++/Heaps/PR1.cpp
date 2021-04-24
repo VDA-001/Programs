@@ -8,7 +8,7 @@ struct Heap{
 	int heap_type;
 };
 
-struct Heap* head=(struct Heap*)malloc(sizeof(struct Heap));
+struct Heap* h=(struct Heap*)malloc(sizeof(struct Heap));
 
 struct Heap * createHeap(int capacity, int heap_type){
 	struct Heap* temp = (struct Heap*)malloc(sizeof(struct Heap));
@@ -22,14 +22,14 @@ struct Heap * createHeap(int capacity, int heap_type){
 	return temp;
 }
 
-int parentNode(struct Heap* h,int i){
+int parentNode(int i){
 	if(i<=0 || i>=h->count){
 		return -1;
 	}
 	return (i-1)/2;
 }
 
-int leftChild(struct Heap* h,int i){
+int leftChild(int i){
 	int left = 2*i+1;
 	if(left>=h->count){
 		return -1;
@@ -37,7 +37,7 @@ int leftChild(struct Heap* h,int i){
 	return left;
 }
 
-int rightChild(struct Heap* h, int i){
+int rightChild(int i){
 	int right = 2*i+2;
 	if(right>=h->count){
 		return -1;
@@ -45,10 +45,10 @@ int rightChild(struct Heap* h, int i){
 	return right;
 }
 
-void percolateDown(struct Heap*h, int i){
+void percolateDown( int i){
 	int l,r,temp,max;
-	l=leftChild(h,i);
-	r=rightChild(h,i);
+	l=leftChild(i);
+	r=rightChild(i);
 	if(l!=-1 && h->array[i]<h->array[l]){
 		max =l;
 	}else
@@ -59,27 +59,27 @@ void percolateDown(struct Heap*h, int i){
 		temp = h->array[max];
 		h->array[max]=h->array[i];
 		h->array[i]=temp;
-		percolateDown(h,max);
+		percolateDown(max);
 	}
 }
 
-int Delete(struct Heap * h){
+int Delete(){
 	int data;
 	if(h->array[h->count-1]==0)
 		return -1;
 	data = h->array[0];
 	h->array[0]=h->array[h->count-1];
 	h->count--;
-	percolateDown(h,0);
+	percolateDown(0);
 	return data;
 }
 
-void resizeHeap(struct Heap* h);
+void resizeHeap();
 
-void Insert(struct Heap* h,int data){
+void Insert(int data){
 	int i;
 	if(h->count==h->capacity){
-		resizeHeap(h);
+		resizeHeap();
 	}
 	h->count++;
 	i=h->count-1;
@@ -90,7 +90,7 @@ void Insert(struct Heap* h,int data){
 	h->array[i] = data;
 }
 
-void resizeHeap(struct Heap* h){
+void resizeHeap(){
 	int *array=h->array;
 	h->array = (int *)malloc(sizeof(int)*h->capacity*2);
 	if(h->array==NULL){
@@ -104,5 +104,27 @@ void resizeHeap(struct Heap* h){
 }
 
 int main(){
+	int ch,capacity,data,heap_type;
+	while(1){
+		cout<<"1.Create 2.Insert 3.Delete \n";
+		cin>>ch;
+		switch(ch){
+			case 1:cout<<"Enter the capacity of heaps\n";
+			       cin>>capacity;
+			       cout<<"Enter the type of heap\n";
+			       cin>>heap_type;
+			       h = createHeap(capacity,heap_type);
+			       break;
+			case 2:cout<<"Enter the data to be inserted\n";
+			       cin>>data;
+			       Insert(data);
+			       break;
+			case 3:data = Delete();
+			       cout<<"Deleted element is "<<data;
+			       break;
+			default:exit(0);
+		}
+			
+	}
 	return 0;
 }
