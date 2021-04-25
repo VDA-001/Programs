@@ -50,3 +50,7 @@ int InsertEdge(struct graph* G,const struct edge E){
     }
     return 1;
 }
+
+int removeEdge(struct graph* G, const struct edge E){
+    
+}
