@@ -1,17 +1,23 @@
 // *Shortest path for weighted graph
-// Use min priority queue to accomplish Djikstra's Algorithm instead of queue
+// Use min priority queue to reduce complexity
 
 #include<stdio.h>
 #include<stdlib.h>
 
-#define MAX_VERTICE 50;
-#define MAX_DEGREE 50;
 
 int q[50],front = -1,rear = -1;
 int prev[50],dist[50];
 int matr[50][50],n;
 
 void traceRoute();
+int inQueue(int i){
+    for(int j=front;j<=rear;j++){
+        if(i==q[j]){
+            return 1;
+        }
+    }
+    return 0;
+}
 
 void ShortestPath(int start, int end){
     int curNode,dstnc,flag=0;
@@ -23,15 +29,13 @@ void ShortestPath(int start, int end){
             dstnc=0;
             if(matr[curNode][i]!=0){
                 dstnc = dist[curNode]+matr[curNode][i];
-                if(dist[i]>=dstnc){
+                if(dist[i] > dstnc){
                     dist[i] = dstnc;
                     prev[i] = curNode;
+                    if(!inQueue(i)){
+                        q[++rear] = i;    
+                    }
                 }
-                else if(dist[i]==-1){
-                    dist[i] = dstnc;
-                    prev[i] = curNode;
-                }
-                q[++rear] = i;
             }
         }
     }
@@ -58,7 +62,7 @@ void main(){
     printf("Enter the matrix\n");
     for(int i=0;i<5;i++){
         prev[i]=-1;
-        dist[i]=-1;
+        dist[i]=50;
         for(int j=0;j<5;j++){
             scanf("%d",&matr[i][j]);
         }
