@@ -2,23 +2,26 @@
 using namespace std;
 
 int main(){
-    int t,x,k,n;
+    int t,x,k,n,j=0,flag;
     cin>>t;
     for(int i=0;i<t;i++){
+        flag=1;
+        j=0;
         cin>>n>>x>>k;
-        if(k!=0){
-            int last = (n+1)-(n+1)%k;
-            int z = (n+1)-last;
-            if((x%k==0)){
-                cout<<"YES\n";
-                continue;
+        while(j<=n+1){
+            if(j*k>x && (n+1)-(j*k)<x){
+                break;
             }
-            if((z!=0)&&((n+1)-x)%z==0){
+            if(j*k==x || (n+1)-(j*k)==x){
+                flag = 0;
                 cout<<"YES\n";
-                continue;
+                break;
             }
+            j+=1;
         }
-        cout<<"NO\n";
+        if(flag==1){
+            cout<<"NO\n";
+        }
     }
     return 0;
 }
