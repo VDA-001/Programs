@@ -1,27 +1,31 @@
 #include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int t,x,k,n,j=0,flag;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
     cin>>t;
     for(int i=0;i<t;i++){
-        flag=1;
-        j=0;
+        int n,x,k;
         cin>>n>>x>>k;
-        while(j<=n+1){
-            if(j*k>x && (n+1)-(j*k)<x){
-                break;
-            }
-            if(j*k==x || (n+1)-(j*k)==x){
-                flag = 0;
+        if(x%(k+1)!=0){
+            int q=x/(k+1)+1;
+            if(x==(q*k)){
                 cout<<"YES\n";
-                break;
+                continue;
             }
-            j+=1;
         }
-        if(flag==1){
-            cout<<"NO\n";
+        int r=(n+1)%(k+1);
+        int last = (n+1)-r;
+        int val = (last%x)+r;
+        int j=(val/(k+1))+1;
+        if(j*k==val){
+            cout<<"YES\n";
+            continue;
         }
+        cout<<"NO\n";
     }
     return 0;
 }
