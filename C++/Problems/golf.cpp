@@ -5,26 +5,20 @@ using namespace std;
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t;
+    long long int t;
     cin>>t;
     for(int i=0;i<t;i++){
-        int n,x,k;
+        long long int n=1,x=1,k=1;
         cin>>n>>x>>k;
-        if(x%(k+1)!=0){
-            int q=x/(k+1)+1;
-            if(x==(q*k)){
-                cout<<"YES\n";
-                continue;
-            }
-        }
-        int r=(n+1)%(k+1);
-        int last = (n+1)-r;
-        int val = (last%x)+r;
-        int j=(val/(k+1))+1;
-        if(j*k==val){
+        if((x%k==0)){
             cout<<"YES\n";
             continue;
         }
+        if(((n+1)-x)%k==0){
+            cout<<"YES\n";
+            continue;
+        }
+        
         cout<<"NO\n";
     }
     return 0;

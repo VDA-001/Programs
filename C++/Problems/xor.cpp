@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cmath>
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -31,7 +32,7 @@ int main(){
         cin>>n;
         count=0;
         x=0;a1=0;a2=0;
-        unsigned long long int r = power(2,n,mod);
+        unsigned long long int r = pow(2,n);//power(2,n,mod);
         while(x<=r){
             a1=(x^(x+1))%mod;
             a2=((x+2)^(x+3))%mod;
