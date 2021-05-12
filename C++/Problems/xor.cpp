@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int power(long long x, unsigned int y, int p)
+int power(long long x, unsigned int y,long long int p)
 {
     
     int res = 1;
@@ -16,14 +16,14 @@ int power(long long x, unsigned int y, int p)
         y = y>>1;
         x = (x*x) % p;
     }
-    cout<<res;
     return res-1;
 }
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int n,count=0,a1,a2;
+    int n,a1,a2;
+    long long int count=0;
     unsigned long long int x=0;
     unsigned long int mod=1000000007;
     int t;
@@ -32,7 +32,7 @@ int main(){
         cin>>n;
         count=0;
         x=0;a1=0;a2=0;
-        unsigned long long int r = pow(2,n);//power(2,n,mod);
+        unsigned long long int r = power(2,n,mod);
         while(x<=r){
             a1=(x^(x+1))%mod;
             a2=((x+2)^(x+3))%mod;

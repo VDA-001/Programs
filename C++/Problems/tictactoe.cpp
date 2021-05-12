@@ -50,7 +50,8 @@ int main(){
                 }
             }
         }
-        int count=0;
+        int countx=0,county=0;
+        /*int count=0;
         for(int i=0;i<3;i++){
             if(r[i]==1){
                 count++;
@@ -69,6 +70,48 @@ int main(){
         if(count>1){
             cout<<3<<endl;
         }else if((count==0 && o!=0)){
+            cout<<2<<endl;
+        }
+        else{
+            cout<<1<<endl;
+        }*/
+        for(int i=0;i<3;i++){
+            if(r[i]==1){
+                if(a[i][0]=='X'){
+                    countx++;
+                }
+                else{
+                    county++;
+                }
+            }
+            if(c[i]==1){
+                if(a[0][i]=='X'){
+                    countx++;
+                }
+                else{
+                    county++;
+                }
+            }
+        }
+        if(d1==1){
+            if(a[0][0]=='X'){
+                countx++;
+            }
+            else{
+                county++;
+            }
+        }
+        if(d2 == 1){
+            if(a[1][1]=='X'){
+                countx++;
+            }
+            else{
+                county++;
+            }
+        }
+        if(countx>=1 && county>=1){
+            cout<<3<<endl;
+        }else if((countx==0 && o!=0)&&(county==0&& o!=0)){
             cout<<2<<endl;
         }
         else{
