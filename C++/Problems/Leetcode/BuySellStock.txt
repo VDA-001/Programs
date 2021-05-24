@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        return calculate(prices,0);
+          
+    }
+    int calculate(vector<int>& prices, int s){
+        /* int maxProfit(vector<int>& prices) {
+        int i=0;
+        int valley = prices[0];
+        int peak = prices[0];
+        int maxProfit=0;
+        while(i<prices.size()-1){
+            while(i<prices.size()-1 && prices[i]>=prices[i+1]){
+                i++;
+            }
+            valley=prices[i];
+            while(i<prices.size()-1 && prices[i]<=prices[i+1]){
+                i++;
+            }
+            peak = prices[i];
+            maxProfit+=peak-valley;
+        }
+        return maxProfit;
+    }*/
+        if(s>=prices.size()){
+            return 0;
+        }
+        int maxi=0;
+        for(int i=s;i<prices.size();i++){
+            int maxProfit=0;
+            for(int j=i+1;j<prices.size();j++){
+                if(prices[i]<prices[j]){
+                    int profit = calculate(prices,j+1) + prices[j]-prices[i];
+                    if(profit>maxProfit){
+                        maxProfit = profit;
+                    }
+                }
+            }
+            if(maxProfit>maxi){
+                maxi=maxProfit;
+            }
+        }
+        return maxi;
+    }
+};

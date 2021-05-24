@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+        int count=0;
+        for(int i=0;i<g.size();i++){
+            int min=-1;
+            for(int j=0;j<s.size();j++){
+                if(g[i]<=s[j]){
+                    if(min==-1){
+                        min=s[j];
+                    }
+                    if(min>s[j]){
+                        min=s[j];
+                    }
+                }
+            }
+            if(min!=-1){
+                vector<int>::iterator it=std::find(s.begin(), s.end(), min);
+                s.erase(it);
+                count++;
+            }
+        }
+        return count;
+    }
+};
