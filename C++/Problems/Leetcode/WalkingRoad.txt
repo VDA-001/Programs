@@ -1,0 +1,87 @@
+class Solution {
+public:
+    int robotSim(vector<int>& commands, vector<vector<int>>& obstacles) {
+        int x=0,y=0,i=0,cy=1,cx=0;
+        bool ytrue=true,xtrue=false;
+        while(i<commands.size()){
+            int j=0,max,min;
+            if(commands[i]==-1){
+                ytrue=false;
+                cy+=1;
+                xtrue=true;
+            }else if(commands[i]==-2){
+                ytrue=true;
+                cx+=1;
+                xtrue=false;
+            }else{
+                if(ytrue && !xtrue){
+                    if(cx%2==0){
+                        max=0;
+                        while(j<obstacles.size()){
+                            if(obstacles[j][0]==x && (y>obstacles[j][1] && obstacles[j][1]>y-commands[i])){
+                                if(obstacles[j][1]>max){
+                                    max=obstacles[j][1];
+                                }
+                            }
+                            j++;
+                        }
+                        if(max!=0){
+                            y=max+1;
+                        }else{
+                            y-=commands[i];
+                        }
+                    }else{
+                        min=y;
+                        while(j<obstacles.size()){
+                            if(obstacles[j][0]==x && (y<obstacles[j][1] && obstacles[j][1]<y+commands[i])){
+                                if(obstacles[j][1]<min){
+                                    min=obstacles[j][1];
+                                }
+                            }
+                            j++;
+                        }
+                        if(min!=y){
+                            y=min-1;
+                        }else{
+                            y+=commands[i];
+                        }
+                    }
+                }else if(xtrue && !ytrue){
+                    if(cy%2==0){
+                        max=0;
+                        while(j<obstacles.size()){
+                            if(obstacles[j][1]==y && (x>obstacles[j][0] && obstacles[j][0]>x-commands[i])){
+                                if(obstacles[j][0]>max){
+                                    max=obstacles[j][0];
+                                }
+                            }
+                            j++;
+                        }
+                        if(max!=0){
+                            x=max+1;
+                        }else{
+                            x-=commands[i];
+                        }
+                    }else{
+                        min=x;
+                        while(j<obstacles.size()){
+                            if(obstacles[j][1]==y && (x<obstacles[j][0] && obstacles[j][0]<x+commands[i])){
+                                if(obstacles[j][0]<min){
+                                    min=obstacles[j][0];
+                                }
+                            }
+                            j++;
+                        }
+                        if(min!=x){
+                            x=min-1;
+                        }else{
+                            x+=commands[i];
+                        }
+                    }
+                }
+            }
+            i++;
+        }
+        return (x*x)+(y*y);
+    }
+};
