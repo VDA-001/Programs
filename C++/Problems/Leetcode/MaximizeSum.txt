@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int largestSumAfterKNegations(vector<int>& nums, int k) {
+        while(k>0){
+            if(k%2==0){
+                int mine=*min_element(nums.begin(),nums.end());
+                while(mine<0 && k>0){
+                    int i=*find(nums.begin(),nums.end(),mine);
+                    nums[i]=-1*nums[i];
+                    k--;
+                    mine=*min_element(nums.begin(),nums.end());
+                }
+                if(k%2==0 && k>0){
+                    break;
+                }
+            }if(k%2!=0){
+                int mine=*min_element(nums.begin(),nums.end());
+                while(mine<0 && k>0){
+                    int i=*find(nums.begin(),nums.end(),mine);
+                    nums[i]=-1*nums[i];
+                    mine=*min_element(nums.begin(),nums.end());
+                    k--;
+                }if(k%2==0 && k>0){
+                    break;
+                }else{
+                    int mine=*min_element(nums.begin(),nums.end());
+                    int i=*find(nums.begin(),nums.end(),mine);
+                    nums[i]=-1*nums[i];
+                    k--;
+                }
+            }
+        }
+        int h=0,sumi=0;
+        while(h<nums.size()){
+            sumi=sumi+nums[h];
+            h++;
+        }
+        return sumi;
+    }
+};
