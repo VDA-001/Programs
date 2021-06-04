@@ -1,0 +1,51 @@
+//Brute force approach
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int majority=nums.size()/2;
+        for(int i=0;i<nums.size();i++){
+            int count=0;
+            for(int j=0;j<nums.size();j++){
+                if(nums[i]==nums[j]){
+                    count++;
+                }
+                if(count>majority){
+                    return nums[i];
+                }    
+            }
+            
+        }
+        return -1;
+    }
+};
+
+//Using Hash map
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int majority_count = nums.size()/2;
+        map<int, int> cnt;
+        for(int i=0;i<nums.size();i++){
+            if(cnt.find(nums[i])==cnt.end()){
+                cnt.insert(pair<int,int>(nums[i],1));
+            }else{
+                cnt[nums[i]]+=1;
+                
+            }
+            if(cnt[nums[i]]>majority_count){
+                return nums[i];
+            }
+        }
+        return -1;
+        
+    }
+};
+
+//Using sorting
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        return nums[nums.size()/2];
+    }
+};
