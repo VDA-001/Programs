@@ -16,32 +16,58 @@ const int mod = 1e+7;
 
 int main(){
     string S;
-    string ref="CHEF";
     cin>>S;
+    //Approach -1 
+    /*string ref="CHEF";
     bool boolVal=true;
     int count=0;
     while(boolVal){
-        int k=0;
+        int k=0,i=0;
         bool refBool=true;
-        for(int i=0;i<S.length();i++){
+        while(i<S.length()){
             if(S[i]==ref[k]){
                 if(S[i]=='F'){
                     count++;
                     k=0;
-                    cout<<count<<endl;
                     S.erase(S.begin()+i);
                     break;
                 }
                 k++;
-                cout<<S[i]<<ref[k-1]<<endl;
                 S.erase(S.begin()+i);
                 refBool=false;
-            }
+            }else{i++;}
         }
         if(refBool){
             boolVal=false;
         }
     }
-    cout<<count<<endl;
+    cout<<count<<endl;*/
+
+    //Approach - 2
+    int c=0,ch=0,che=0,chef=0;
+    for(int i=0;i<S.length();i++){
+        if(S[i]=='C'){
+            c++;
+        }
+        else if(S[i]=='H'){
+            if(c>0){
+                c--;
+                ch++;
+            }
+        }
+        else if(S[i]=='E'){
+            if(ch>0){
+                ch--;
+                che++;
+            }
+        }
+        else if(S[i]=='F'){
+            if(che>0){
+                che--;
+                chef++;
+            }
+        }
+    }
+    cout<<chef<<endl;
     return 0;
 }
